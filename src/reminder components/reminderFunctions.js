@@ -37,10 +37,9 @@ export class Reminders {
 	constructor() {
 		this.tasks = []
 	}
-	
+
 	refresh() {
 		const repeatTasks = this.tasks.filter(task => {
-			
 			const date = new Date(`${task.deadline}`).toDateString()
 			const nowDate = new Date().toDateString()
 			return task.isRepeatTask && nowDate === date
@@ -74,6 +73,18 @@ export class Reminders {
 			return date === nowDate
 		})
 	}
+	getAllForDay(userDate) {
+		// console.log(userDate)
+		return this.tasks.filter(task => {
+			// console.log(task.deadline)
+			const date = new Date(task.deadline).toLocaleDateString()
+			// const nowDate = new Date().toDateString()
+			const nowDate = new Date(userDate).toLocaleDateString()
+			// console.log(nowDate)
+			// console.log(date)
+			return date === nowDate
+		})
+	}
 
 	getAllWithPhrase(phrase) {
 		return this.tasks.filter(task => task.name.includes(phrase) || task.description.includes(phrase))
@@ -91,5 +102,3 @@ export class Reminders {
 		this.tasks[index] = { ...this.tasks[index], ...updatedTask }
 	}
 }
-
-

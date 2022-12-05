@@ -52,6 +52,7 @@ const ReminderCalendar = (props) => {
             <button className="btn btn-primary" onClick={() => {props.setNewTask(true)}}>
                 <span>Dodaj zadanie</span>
             </button>
+            <button onClick={()=>{props.setSeach(true)}}>Szukaj zadań</button>
         </header>
     <div className="calendar-week">
         <h2>Zadania na ten tydzień</h2>
