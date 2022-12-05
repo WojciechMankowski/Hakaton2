@@ -90,6 +90,8 @@ export class Reminders {
 		return this.tasks.filter(task => task.name.includes(phrase) || task.description.includes(phrase))
 	}
 	addTask(task) {
+		const task_json = JSON.stringify(task)
+		localStorage.setItem(task.name, task_json)
 		this.tasks.push(task)
 	}
 

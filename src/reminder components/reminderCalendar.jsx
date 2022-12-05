@@ -37,14 +37,14 @@ const ReminderCalendar = (props) => {
             for ( let i=0; i < 7; i++) {
             const weekDay = getAllForToday(startWeek + i)
             forOneDay[i] = weekDay
-            console.log(startWeek +1)
+            // console.log(startWeek +1)
             }
             return forOneDay
         }
         return forEachDay()
     }
     const taskWeek = assignTaskWeek()
-    console.log(taskWeek)
+    // console.log(taskWeek)
   return (
     <div className="container">
         <header>

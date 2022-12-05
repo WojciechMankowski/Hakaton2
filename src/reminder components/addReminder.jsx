@@ -1,6 +1,5 @@
 import { React, useState } from "react"
 import "../Reminder.css"
-
 import "bootstrap/dist/css/bootstrap.min.css"
 import { Reminder } from "./reminderFunctions"
 
@@ -18,6 +17,7 @@ const AddReminder = props => {
 		props.addTask(
 			new Reminder(nameTask, dateTask, descriptionTask, categoryTask, isImportantTask, repeatTask, whenRepeatTask)
 		)
+		
 		props.setNewTask(!props.newTask)
 	}
 	if (props.newTask) {

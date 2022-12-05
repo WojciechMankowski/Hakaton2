@@ -11,10 +11,30 @@ import SearchOnDay from "./reminder components/SearchOnDay"
 const AppReminder = () => {
 	const [task, setTask] = useState(new Reminders())
 	const [newTask, setNewTask] = useState(false)
-  const [search, setSeach] = useState(false)
+	const [search, setSeach] = useState(false)
+	
+	for (let i = 0; i < localStorage.length; i++) {
+		const item = localStorage.getItem(localStorage.key(i))
+		try {
+			const retrievedObject = JSON.parse(item)
 
-	console.log(task)
-	// task.addTask(new Reminder("zrobic zakupy", new Date()))
+			if (localStorage.length != task.getAll().length) {
+				task.addTask(
+					new Reminder(
+						retrievedObject.name,
+						retrievedObject.deadline,
+						retrievedObject.description,
+						retrievedObject.category,
+						retrievedObject.isRepeatTask,
+						retrievedObject.howDay
+					)
+				)
+			}
+		} catch (error) {
+			console.log()
+		}
+	}
+	// console.log(task.getAll())
 	const NewTask = Task => {
 		console.log(task.getAll())
 		task.addTask(Task)
@@ -23,7 +43,7 @@ const AppReminder = () => {
 	return (
 		<div className="container">
 			<ReminderCalendar setNewTask={setNewTask} task={task} setSeach={setSeach} />
-			<SearchOnDay task={task} search={search} setSeach={setSeach}/>
+			<SearchOnDay task={task} search={search} setSeach={setSeach} />
 			<AddReminder addTask={NewTask} setNewTask={setNewTask} newTask={newTask} />
 		</div>
 	)
