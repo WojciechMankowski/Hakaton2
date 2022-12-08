@@ -74,14 +74,9 @@ export class Reminders {
 		})
 	}
 	getAllForDay(userDate) {
-		// console.log(userDate)
 		return this.tasks.filter(task => {
-			// console.log(task.deadline)
 			const date = new Date(task.deadline).toLocaleDateString()
-			// const nowDate = new Date().toDateString()
 			const nowDate = new Date(userDate).toLocaleDateString()
-			// console.log(nowDate)
-			// console.log(date)
 			return date === nowDate
 		})
 	}
@@ -97,9 +92,15 @@ export class Reminders {
 
 	deleteTask(task) {
 		const tasksIndex = this.tasks.indexOf(task)
+		localStorage.removeItem(task.name)
 		this.tasks.pop(tasksIndex)
 	}
-
+	setAsDone(task) {
+		const newTask = this.tasks.filter(item => item.id == task.id)[0]
+		newTask.setAsDone()
+		localStorage.removeItem(task.name)
+		localStorage.setItem(task.name, JSON.stringify(newTask))
+	}
 	editTask(updatedTask, index) {
 		this.tasks[index] = { ...this.tasks[index], ...updatedTask }
 	}

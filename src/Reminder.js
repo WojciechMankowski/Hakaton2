@@ -1,7 +1,6 @@
 import { React } from "react"
 import "./Reminder.css"
 import { useState } from "react"
-
 import "bootstrap/dist/css/bootstrap.min.css"
 import AddReminder from "./reminder components/addReminder"
 import ReminderCalendar from "./reminder components/reminderCalendar"
@@ -50,3 +49,4 @@ const AppReminder = () => {
 }
 
 export default AppReminder
+// 

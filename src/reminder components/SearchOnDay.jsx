@@ -10,7 +10,23 @@ function SearchOnDay(props) {
 		const taskOnDay = props.task.getAllForDay(date)
 		setElement(
 			taskOnDay.map(element => {
-				return <p key={element.name}>{element.name}</p>
+				return (
+					<p key={element.name}>
+						<input
+							type="checkbox"
+							onClick={() => {
+								props.task.setAsDone(element)
+							}}
+						/>
+						{element.name}
+						<button
+							onClick={() => {
+								props.task.deleteTask(element)
+							}}>
+							Usuń
+						</button>
+					</p>
+				)
 			})
 		)
 		setIsList(true)
@@ -22,8 +38,8 @@ function SearchOnDay(props) {
 			words.map(element => {
 				return (
 					<p>
+						<input type="checkbox" />
 						{element.name}
-						{/* <button onClick={()=> {props.task.editTask({}, element)}}>Edytuj</button> */}
 						<button
 							onClick={() => {
 								props.task.deleteTask(element)
@@ -34,7 +50,7 @@ function SearchOnDay(props) {
 				)
 			})
 		)
-		isList = true
+		setIsList(!isList)
 		props.setSeach(!props.search)
 	}
 	const showAll = () => {
@@ -43,8 +59,13 @@ function SearchOnDay(props) {
 			words.map(element => {
 				return (
 					<p>
+						<input
+							type="checkbox"
+							onClick={() => {
+								props.task.setAsDone(element)
+							}}
+						/>
 						{element.name}
-						{/* <button onClick={()=> {props.task.editTask({}, element)}}>Edytuj</button> */}
 						<button
 							onClick={() => {
 								props.task.deleteTask(element)
@@ -55,7 +76,7 @@ function SearchOnDay(props) {
 				)
 			})
 		)
-		isList = true
+		setIsList(!isList)
 		props.setSeach(!props.search)
 	}
 	const showAllIsDone = () => {
@@ -65,7 +86,6 @@ function SearchOnDay(props) {
 				return (
 					<p>
 						{element.name}
-						{/* <button onClick={()=> {props.task.editTask({}, element)}}>Edytuj</button> */}
 						<button
 							onClick={() => {
 								props.task.deleteTask(element)
@@ -76,13 +96,13 @@ function SearchOnDay(props) {
 				)
 			})
 		)
-		isList = true
+		setIsList(!isList)
 		props.setSeach(!props.search)
 	}
-	console.log(elements, props.search)
+	
 	if (props.search) {
 		return (
-			<label htmlFor="">
+			<label htmlFor="" className="search">
 				Podaj datę
 				<input
 					type="date"
@@ -90,7 +110,7 @@ function SearchOnDay(props) {
 						setDate(event.target.value)
 					}}
 				/>
-				<button type="button" onClick={search}>
+				<button type="button" onClick={search} className="btn btn-primary">
 					Szukaj
 				</button>
 				<label>
@@ -101,21 +121,20 @@ function SearchOnDay(props) {
 							setWord(event.target.value)
 						}}
 					/>
-					<button type="button" onClick={seachWord}>
+					<button type="button" onClick={seachWord} className="btn btn-primary">
 						Szukaj
 					</button>
 				</label>
-				<button onClick={showAll} type="button">
+				<button onClick={showAll} type="button" className="btn btn-primary">
 					Pokaż wszystko
 				</button>
-				<button onClick={showAllIsDone} type="button">
+				<button onClick={showAllIsDone} type="button" className="btn btn-primary">
 					Pokaż wszystkie niezakończone
 				</button>
 			</label>
 		)
 	} else if (isList) {
 		return <div>{elements}</div>
-	} 
-	else <div />
+	} else <div />
 }
 export default SearchOnDay
