@@ -1,11 +1,12 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 
 function SearchOnDay(props) {
 	const [date, setDate] = useState("")
 	const [word, setWord] = useState("")
 	const [isList, setIsList] = useState(false)
 	let [elements, setElement] = useState([])
-
+	
+	// useEffect(()=>{}, [])
 	const search = () => {
 		const taskOnDay = props.task.getAllForDay(date)
 		setElement(
@@ -99,7 +100,7 @@ function SearchOnDay(props) {
 		setIsList(!isList)
 		props.setSeach(!props.search)
 	}
-	
+
 	if (props.search) {
 		return (
 			<label htmlFor="" className="search">

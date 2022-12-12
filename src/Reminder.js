@@ -1,4 +1,4 @@
-import { React } from "react"
+import { React, useEffect } from "react"
 import "./Reminder.css"
 import { useState } from "react"
 import "bootstrap/dist/css/bootstrap.min.css"
@@ -11,33 +11,35 @@ const AppReminder = () => {
 	const [task, setTask] = useState(new Reminders())
 	const [newTask, setNewTask] = useState(false)
 	const [search, setSeach] = useState(false)
-	
-	for (let i = 0; i < localStorage.length; i++) {
-		const item = localStorage.getItem(localStorage.key(i))
-		try {
-			const retrievedObject = JSON.parse(item)
-
-			if (localStorage.length != task.getAll().length) {
-				task.addTask(
-					new Reminder(
-						retrievedObject.name,
-						retrievedObject.deadline,
-						retrievedObject.description,
-						retrievedObject.category,
-						retrievedObject.isRepeatTask,
-						retrievedObject.howDay
+	useEffect(() => {
+		for (let i = 0; i < localStorage.length; i++) {
+			const item = localStorage.getItem(localStorage.key(i))
+			try {
+				const retrievedObject = JSON.parse(item)
+				if (localStorage.length != task.getAll().length) {
+					task.addTask(
+						new Reminder(
+							retrievedObject.name,
+							retrievedObject.deadline,
+							retrievedObject.description,
+							retrievedObject.category,
+							retrievedObject.isRepeatTask,
+							retrievedObject.howDay
+						)
 					)
-				)
+				}
+			} catch (error) {
+				console.log()
 			}
-		} catch (error) {
-			console.log()
 		}
-	}
+	}, [])
+	
 	// console.log(task.getAll())
 	const NewTask = Task => {
-		console.log(task.getAll())
+		// e.preventDefault()
+		console.log(task.getAll().length)
 		task.addTask(Task)
-		console.log(task.getAll())
+		console.log(task.getAll().length)
 	}
 	return (
 		<div className="container">
@@ -49,4 +51,4 @@ const AppReminder = () => {
 }
 
 export default AppReminder
-// 
+//

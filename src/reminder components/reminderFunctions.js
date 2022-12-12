@@ -13,7 +13,7 @@ export class Reminder {
 		this.description = description
 		this.category = category
 		this.priority = priorities.LOW
-		this.id = Math.random
+		this.id = localStorage.length + 1
 		this.assignedTo = ""
 		this.createdBy = ""
 		this.isRepeatTask = isRepeatTask
@@ -65,7 +65,9 @@ export class Reminders {
 	getAllNotCompleted() {
 		return this.tasks.filter(task => !task.isCompleted)
 	}
-
+	remove() {
+		this.tasks = []
+	}
 	getAllForToday() {
 		return this.tasks.filter(task => {
 			const date = new Date(`${task.deadline}`).toDateString()
@@ -86,13 +88,15 @@ export class Reminders {
 	}
 	addTask(task) {
 		const task_json = JSON.stringify(task)
-		localStorage.setItem(task.name, task_json)
 		this.tasks.push(task)
+		const id = localStorage.length + 1
+		localStorage.setItem(id, task_json)
 	}
 
 	deleteTask(task) {
-		const tasksIndex = this.tasks.indexOf(task)
-		localStorage.removeItem(task.name)
+		const goodTask = this.tasks.filter(item => item.id == task.id)[0]
+		const tasksIndex = this.tasks.indexOf(goodTask)
+		localStorage.removeItem(task.id)
 		this.tasks.pop(tasksIndex)
 	}
 	setAsDone(task) {

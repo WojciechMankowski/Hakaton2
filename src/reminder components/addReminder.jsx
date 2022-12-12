@@ -13,11 +13,12 @@ const AddReminder = props => {
 	const [whenRepeatTask, setWhenRepeatTask] = useState("")
 
 	const getDataForm = e => {
-		// e.preventDefault()
+		e.preventDefault()
+		console.log("TEST")
 		props.addTask(
 			new Reminder(nameTask, dateTask, descriptionTask, categoryTask, isImportantTask, repeatTask, whenRepeatTask)
 		)
-		
+
 		props.setNewTask(!props.newTask)
 	}
 	if (props.newTask) {
