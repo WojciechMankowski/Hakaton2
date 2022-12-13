@@ -1,7 +1,6 @@
 import { React, useState } from "react"
 import "../Reminder.css"
 import "bootstrap/dist/css/bootstrap.min.css"
-import { Reminder } from "./reminderFunctions"
 
 const AddReminder = props => {
 	const [nameTask, setNameTask] = useState("")
@@ -15,9 +14,16 @@ const AddReminder = props => {
 	const getDataForm = e => {
 		e.preventDefault()
 		console.log("TEST")
-		props.addTask(
-			new Reminder(nameTask, dateTask, descriptionTask, categoryTask, isImportantTask, repeatTask, whenRepeatTask)
-		)
+		props.addTask({
+			name: nameTask,
+			deadline: dateTask,
+			description: descriptionTask,
+			category: categoryTask,
+			isCompleted: isImportantTask,
+			isRepeatTask: repeatTask,
+			howDay: whenRepeatTask,
+			id: localStorage.length + 1,
+		})
 
 		props.setNewTask(!props.newTask)
 	}
