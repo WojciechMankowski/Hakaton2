@@ -23,7 +23,7 @@ const AppReminder = () => {
 			}
 		}
 	}, [])
-
+	console.log(tasks)
 	const NewTask = task => {
 		tasks.push(task)
 		addTask(tasks, task)

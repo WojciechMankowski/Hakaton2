@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import { getAllForDay, getAllWithPhrase, getAllNotCompleted, deleteTask, setAsDone } from "../Helpers/function"
 function SearchOnDay({ tasks, search, setSeach }) {
 	const [date, setDate] = useState("")
@@ -10,20 +10,6 @@ function SearchOnDay({ tasks, search, setSeach }) {
 		event.preventDefault()
 		const taskOnDay = getAllForDay(tasks, date)
 		console.table(taskOnDay)
-		// setElement(
-		// 	taskOnDay.map(element => (
-		// 		<p key={element.name}>
-		// 			<input type="checkbox" onClick={() => {}} />
-		// 			{element.name}
-		// 			<button
-		// 				onClick={() => {
-		// 					deleteTask(tasks, element)
-		// 				}}>
-		// 				Usuń
-		// 			</button>
-		// 		</p>
-		// 	))
-		// )
 		elements = taskOnDay.map(element => (
 			<p key={element.name}>
 				<input
@@ -73,20 +59,6 @@ function SearchOnDay({ tasks, search, setSeach }) {
 		console.log(elements)
 	}
 	const showAll = event => {
-		// event.preventDefault()
-
-		// elements = tasks.map(element => (
-		// 	<p key={element.name}>
-		// 		<input type="checkbox" onClick={() => {}} />
-		// 		{element.name}
-		// 		<button
-		// 			onClick={() => {
-		// 				deleteTask(tasks, element)
-		// 			}}>
-		// 			Usuń
-		// 		</button>
-		// 	</p>
-		// ))
 		setElement(
 			tasks.map(element => (
 				<p key={element.name}>
@@ -163,7 +135,7 @@ function SearchOnDay({ tasks, search, setSeach }) {
 						</button>
 					</label>
 				</div>
-				<div>
+				<div className="col-md-10">
 					<button onClick={showAll} type="button" className="btn btn-primary">
 						Pokaż wszystkie zadania
 					</button>
@@ -174,6 +146,52 @@ function SearchOnDay({ tasks, search, setSeach }) {
 				<div>{elements}</div>
 			</div>
 		)
-	} else <div />
+	} else
+		return (
+			<div className="search">
+				<div className="row">
+					<div className="col">
+						<label htmlFor="">
+							Podaj datę
+							<input
+								type="date"
+								onChange={event => {
+									setDate(event.target.value)
+								}}
+							/>
+						</label>
+						<button type="button" onClick={searchOfDate} className="btn btn-primary">
+							Szukaj
+						</button>
+					</div>
+					<div className="col">
+						<label>
+							Szukane słowo:
+							<input
+								type="text"
+								onChange={event => {
+									setWord(event.target.value)
+								}}
+							/>
+							<button type="button" onClick={seachWord} className="btn btn-primary">
+								Szukaj
+							</button>
+						</label>
+					</div>
+				</div>
+				<div className="row">
+					<div className="col">
+						<button onClick={showAll} type="button" className="btn btn-primary">
+							Pokaż wszystkie zadania
+						</button>
+					</div>
+					<div className="col">
+						<button onClick={showAllIsDone} type="button" className="btn btn-primary">
+							Pokaż wszystkie niezakończone zadania
+						</button>
+					</div>
+				</div>
+			</div>
+		)
 }
 export default SearchOnDay

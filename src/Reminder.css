@@ -112,15 +112,12 @@ input {
 	border: 2px black solid;
 	width: 98%;
 	padding: 12px 60px;
-	/* display: flex;
-	flex-direction: row; */
 }
-.search button {
-	margin: 6px 12px;
-	min-width: 80px;
-}
+
+
 .search input {
 	margin: 6px 12px;
+	
 }
 
 .wrapper_btn {

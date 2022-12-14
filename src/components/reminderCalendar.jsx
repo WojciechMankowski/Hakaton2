@@ -2,6 +2,7 @@ import "../Reminder.css"
 import "bootstrap/dist/css/bootstrap.min.css"
 import InputReminder from "./inputReminder"
 import { getStartDateWeek, divideByDays } from "../Helpers/function"
+import Header from "./Header"
 const ReminderCalendar = props => {
 	let taskWeek = {}
 	const assignTaskWeek = () => {
@@ -17,28 +18,11 @@ const ReminderCalendar = props => {
 		return forOneDay
 	}
 	taskWeek = assignTaskWeek()
-	// console.log(taskWeek)
+	console.log(taskWeek)
 	return (
 		<div className="container">
-			<header>
-				<h1>Przypomnienie o zadaniach</h1>
-				<div className="wrapper_btn">
-					<button
-						className="btn btn-primary"
-						onClick={() => {
-							props.setNewTask(true)
-						}}>
-						<span>Dodaj zadanie</span>
-					</button>
-					<button
-						className="btn btn-primary"
-						onClick={() => {
-							props.setSeach(true)
-						}}>
-						Szukaj zadań
-					</button>
-				</div>
-			</header>
+			<Header setSeach={props.setSeach} setNewTask={props.setNewTask} />
+
 			<div className="calendar-week">
 				<h2>Zadania na ten tydzień</h2>
 			</div>
