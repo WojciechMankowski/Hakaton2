@@ -27,8 +27,10 @@ export const deleteTask = (tasks, task) => {
 	tasks.pop(tasksIndex)
 }
 export const setAsDone = (tasks, task) => {
+	console.log(!task.isCompleted)
 	const newTask = tasks.filter(item => item.id == task.id)[0]
-	newTask.setAsDone()
+	newTask.isCompleted = !task.isCompleted
+	tasks[tasks.indexOf(task)] = newTask
 	localStorage.removeItem(task.id)
 	localStorage.setItem(task.id, JSON.stringify(newTask))
 }
@@ -43,7 +45,6 @@ export const getAllForDay = (tasks, userDate) => {
 	})
 }
 export const divideByDays = (tasks, date) => {
-	
 	return tasks.filter(task => {
 		// console.log(task)
 		const DateTask = date.toDateString()

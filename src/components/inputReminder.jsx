@@ -1,12 +1,16 @@
-const InputReminder = ({ tasksForTheDay }) => {
+import { setAsDone } from "../Helpers/function"
+const InputReminder = ({ tasksForTheDay, tasks }) => {
 	// console.log(tasksForTheDay)
 
 	const names = tasksForTheDay.map(task => {
 		return (
-			<p key={task.id}>
-				<input type="checkbox" name="" id="" checked={task.isDone} onClick={() => {}} />
-				{task.name}
-			</p>
+			<div key={task.id} className="dayTask">
+				<input type="checkbox" name="" id="" checked={task.isCompleted} 
+				onClick={()=> {setAsDone(tasks, task)}} 
+				onChange={()=> {}}
+				className="checkboxTask" />
+				<div className="taskName">{task.name}</div>
+			</div>
 		)
 	})
 	return <div>{names}</div>

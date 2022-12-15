@@ -3,17 +3,15 @@ import React from "react"
 const Header = ({ setSeach, setNewTask }) => {
 	return (
 		<header>
-			<h1>Przypomnienie o zadaniach</h1>
+			<h1 className="title">Przypomnienie o zadaniach</h1>
 			<div className="wrapper_btn">
 				<button
-					className="btn btn-primary"
 					onClick={() => {
 						setNewTask(true)
 					}}>
-					<span>Dodaj zadanie</span>
+					Dodaj zadanie
 				</button>
 				<button
-					className="btn btn-primary"
 					onClick={() => {
 						setSeach(true)
 					}}>

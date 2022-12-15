@@ -30,7 +30,7 @@ const AddReminder = props => {
 	if (props.newTask) {
 		return (
 			<div className="addTask">
-				<h2>Dodaj nowe zadanie</h2>
+				<h2 className="addTitle">Dodaj nowe zadanie</h2>
 				<form action="">
 					<div className="row">
 						<label htmlFor="nameTask" className="col-10 col-htmlForm-label">

@@ -8,21 +8,20 @@ import SearchOnDay from "./components/SearchOnDay"
 import { addTask } from "./Helpers/function"
 
 const AppReminder = () => {
-	const [tasks, setTasks] = useState([])
+	let [tasks, setTasks] = useState([])
 	const [newTask, setNewTask] = useState(false)
 	let [search, setSeach] = useState(false)
-
-	useEffect(() => {
-		for (let i = 0; i < localStorage.length; i++) {
-			const item = localStorage.getItem(localStorage.key(i))
-			try {
-				const retrievedObject = JSON.parse(item)
-				tasks.push({ ...retrievedObject })
-			} catch (error) {
-				console.log()
-			}
+	tasks = []
+	for (let i = 0; i < localStorage.length; i++) {
+		const item = localStorage.getItem(localStorage.key(i))
+		try {
+			const retrievedObject = JSON.parse(item)
+			tasks.push({ ...retrievedObject })
+		} catch (error) {
+			console.log()
 		}
-	}, [])
+	}
+	useEffect(() => {}, [])
 	console.log(tasks)
 	const NewTask = task => {
 		tasks.push(task)

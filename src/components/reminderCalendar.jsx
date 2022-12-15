@@ -9,6 +9,7 @@ const ReminderCalendar = props => {
 		let startWeek = getStartDateWeek(new Date())
 		let nextDay = new Date(startWeek)
 		const forOneDay = {}
+		// console.log("assignTaskWeek")
 		for (let i = 0; i < 7; i++) {
 			nextDay.setDate(startWeek.getDate() + i)
 			const weekDay = divideByDays(props.tasks, nextDay)
@@ -17,14 +18,15 @@ const ReminderCalendar = props => {
 		}
 		return forOneDay
 	}
+	
 	taskWeek = assignTaskWeek()
 	console.log(taskWeek)
 	return (
-		<div className="container">
+		<div className="calendar">
 			<Header setSeach={props.setSeach} setNewTask={props.setNewTask} />
 
 			<div className="calendar-week">
-				<h2>Zadania na ten tydzień</h2>
+				<h2 className="headerCalendar">Zadania na ten tydzień</h2>
 			</div>
 			<div className="week">
 				<div className="day">
