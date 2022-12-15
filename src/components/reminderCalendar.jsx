@@ -3,13 +3,14 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import InputReminder from "./inputReminder"
 import { getStartDateWeek, divideByDays } from "../Helpers/function"
 import Header from "./Header"
+
 const ReminderCalendar = props => {
 	let taskWeek = {}
+	
 	const assignTaskWeek = () => {
 		let startWeek = getStartDateWeek(new Date())
 		let nextDay = new Date(startWeek)
 		const forOneDay = {}
-		// console.log("assignTaskWeek")
 		for (let i = 0; i < 7; i++) {
 			nextDay.setDate(startWeek.getDate() + i)
 			const weekDay = divideByDays(props.tasks, nextDay)
@@ -18,9 +19,8 @@ const ReminderCalendar = props => {
 		}
 		return forOneDay
 	}
-	
 	taskWeek = assignTaskWeek()
-	console.log(taskWeek)
+
 	return (
 		<div className="calendar">
 			<Header setSeach={props.setSeach} setNewTask={props.setNewTask} />

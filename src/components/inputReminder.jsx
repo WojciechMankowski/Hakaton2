@@ -7,7 +7,6 @@ const InputReminder = ({ tasksForTheDay, tasks }) => {
 			<div key={task.id} className="dayTask">
 				<input type="checkbox" name="" id="" checked={task.isCompleted} 
 				onClick={()=> {setAsDone(tasks, task)}} 
-				onChange={()=> {}}
 				className="checkboxTask" />
 				<div className="taskName">{task.name}</div>
 			</div>

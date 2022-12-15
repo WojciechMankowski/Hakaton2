@@ -14,7 +14,6 @@ export const getAllWithPhrase = (tasks, phrase) => {
 }
 
 export const addTask = (tasks, task) => {
-	console.log(task)
 	const task_json = JSON.stringify(task)
 	tasks.push(task)
 	const id = localStorage.length + 1
@@ -27,7 +26,6 @@ export const deleteTask = (tasks, task) => {
 	tasks.pop(tasksIndex)
 }
 export const setAsDone = (tasks, task) => {
-	console.log(!task.isCompleted)
 	const newTask = tasks.filter(item => item.id = task.id)[0]
 	newTask.isCompleted = !task.isCompleted
 	tasks[tasks.indexOf(task)] = newTask
@@ -46,10 +44,8 @@ export const getAllForDay = (tasks, userDate) => {
 }
 export const divideByDays = (tasks, date) => {
 	return tasks.filter(task => {
-		// console.log(task)
 		const DateTask = date.toDateString()
 		const deadline = new Date(task.deadline)
-		// console.log(deadline.toDateString() === DateTask)
 		return deadline.toDateString() === DateTask
 	})
 }
@@ -69,6 +65,5 @@ export const getStartDateWeek = nowDate => {
 				break
 		}
 	} else date = new Date(2022, 11, startDate)
-	// console.log("startweek", date)
 	return date
 }

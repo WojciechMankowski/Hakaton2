@@ -13,7 +13,6 @@ const AddReminder = props => {
 
 	const getDataForm = e => {
 		e.preventDefault()
-		console.log("TEST")
 		props.addTask({
 			name: nameTask,
 			deadline: dateTask,

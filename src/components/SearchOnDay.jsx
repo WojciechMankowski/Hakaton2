@@ -1,6 +1,8 @@
 import React, { useState } from "react"
 import { getAllForDay, getAllWithPhrase, getAllNotCompleted, deleteTask, setAsDone } from "../Helpers/function"
+
 function SearchOnDay({ tasks, search, setSeach }) {
+	
 	const [date, setDate] = useState("")
 	const [word, setWord] = useState("")
 	let [isList, setIsList] = useState(false)
@@ -9,10 +11,9 @@ function SearchOnDay({ tasks, search, setSeach }) {
 	const searchOfDate = event => {
 		event.preventDefault()
 		const taskOnDay = getAllForDay(tasks, date)
+
 		elements = taskOnDay.map(element => (
-			<div 
-			className="searchTask" 	
-			key={element.name}>
+			<div className="searchTask" key={element.name}>
 				<input
 					className="inputTask"
 					type="checkbox"
@@ -37,7 +38,7 @@ function SearchOnDay({ tasks, search, setSeach }) {
 	}
 	const seachWord = () => {
 		const words = getAllWithPhrase(tasks, word)
-
+		
 		elements = words.map(element => (
 			<div className="searchTask" key={element.name}>
 				<input

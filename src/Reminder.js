@@ -1,4 +1,4 @@
-import { React, useEffect } from "react"
+import { React } from "react"
 import "./Reminder.css"
 import { useState } from "react"
 import "bootstrap/dist/css/bootstrap.min.css"
@@ -21,7 +21,7 @@ const AppReminder = () => {
 			console.log()
 		}
 	}
-	console.log(tasks)
+	// console.log(tasks)
 	const NewTask = task => {
 		tasks.push(task)
 		addTask(tasks, task)
