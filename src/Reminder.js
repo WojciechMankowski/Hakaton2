@@ -21,7 +21,6 @@ const AppReminder = () => {
 			console.log()
 		}
 	}
-	useEffect(() => {}, [])
 	console.log(tasks)
 	const NewTask = task => {
 		tasks.push(task)

@@ -21,14 +21,14 @@ export const addTask = (tasks, task) => {
 	localStorage.setItem(id, task_json)
 }
 export const deleteTask = (tasks, task) => {
-	const goodTask = tasks.filter(item => item.id == task.id)[0]
+	const goodTask = tasks.filter(item => item.id === task.id)[0]
 	const tasksIndex = tasks.indexOf(goodTask)
 	localStorage.removeItem(task.id)
 	tasks.pop(tasksIndex)
 }
 export const setAsDone = (tasks, task) => {
 	console.log(!task.isCompleted)
-	const newTask = tasks.filter(item => item.id == task.id)[0]
+	const newTask = tasks.filter(item => item.id = task.id)[0]
 	newTask.isCompleted = !task.isCompleted
 	tasks[tasks.indexOf(task)] = newTask
 	localStorage.removeItem(task.id)
