@@ -1,6 +1,5 @@
-import { React } from "react"
+import React, { useState } from "react"
 import "./Reminder.css"
-import { useState } from "react"
 import "bootstrap/dist/css/bootstrap.min.css"
 import AddReminder from "./components/addReminder"
 import ReminderCalendar from "./components/reminderCalendar"
@@ -12,6 +11,7 @@ const AppReminder = () => {
 	const [newTask, setNewTask] = useState(false)
 	let [search, setSeach] = useState(false)
 	tasks = []
+
 	for (let i = 0; i < localStorage.length; i++) {
 		const item = localStorage.getItem(localStorage.key(i))
 		try {
@@ -21,7 +21,7 @@ const AppReminder = () => {
 			console.log()
 		}
 	}
-	// console.log(tasks)
+
 	const NewTask = task => {
 		tasks.push(task)
 		addTask(tasks, task)
@@ -36,4 +36,3 @@ const AppReminder = () => {
 }
 
 export default AppReminder
-//
